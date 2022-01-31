@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>	
+
+<head>
+<title>Projekt Minesweeper</title>
+<meta charset='utf-8' />
+</head>
+
+
+<body>
+
+<canvas id='cvs' width='800px'  height='100px' style='border:1px solid #00ff00;'></canvas>
+<br/>
+
+<canvas id='cvsout' width='800px'  height='800px' style='border:1px solid #000000;'></canvas>
+
+
+<script>
+
+let cvs = document.getElementById('cvs');
+let ctx = cvs.getContext('2d');
+
+let cvsout = document.getElementById('cvsout'); 
+let ctxout = cvsout.getContext('2d');
+
+let img = new Image();
+
+img.src = 'img/business_person.png'//source = Quelle
+
+img.onload = ()=> { // on load = wenn geladen
+	ctx.drawImage( img, 0,0);
+	image2Grayscale( ctx, ctxout );
+	colorNum (ctx, ctxout, ctxoutnum);
+			
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
