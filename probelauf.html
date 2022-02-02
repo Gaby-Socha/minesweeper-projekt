@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>	
+
+<head>
+<title>Projekt Minesweeper</title>
+</head>
+<meta charset='utf-8' 
+<body>
+
+<canvas id='cvs' width='300px'  height='100px' style='border:1px solid #00ff00;margin-bottom:10px;'></canvas>
+<br/>
+
+<canvas id='cvsout' width='300px'  height='300px' style='border:1px solid #000000;'></canvas>
+<script src="function.js" ></script>
+<script src="time.js"></script>
+<script src="bombs.js" ></script>
+<script>
+
+
+var Field = function(id) {
+	this.id = id;
+	
+	
+	this.hasBomb = false;
+	
+	
+	
+	
+	this.fieldImage = null;
+}
+//3 Bomben irgendwo auf dem Spielfeld verteilen
+//Variable num_fields wird aus function.js genommen
+let field_array=[];
+for (let i=0; i<num_fields; i++){
+field_array[i]=[];
+for(let x= 0; x<num_fields; x++){
+field_array[i][x]=new Field();}
+}
+
+let bombs = 3;
+while (bombs>0){
+		let number_of_fields= field_array.flat().length;
+		let random_field=field_array.flat()[parseInt(Math.random()*number_of_fields)]
+		if (random_field.hasBomb==false){
+			random_field.hasBomb=true;
+			bombs--;
+console.log(random_field,random_field.hasBomb);	//Kontrolle über Konsole ob Bomben wirklich gesetzt werden		
+		}	
+}
+function mouseklick (evt){
+	let cvsout = document.getElementById('cvsout');
+	
+	let selectedX = parseInt( evt.offsetX / ( cvsout.width / num_fields ) ) ;
+	let selectedY = parseInt( evt.offsetY / ( cvsout.height / num_fields ) ) ;
+if (field_array[selectedY][selectedX].hasBomb ==true)
+{
+console.log("Game over");}
+}
+
+cvsout.onclick= mouseklick; //bei Mausklick wird die Funktion ausgeführt 
+//der Funktionsaufruf braucht keine runden Klammern weil ein Event (Zeile 51) verwendet wird 
+
+
+</script>
+
+
+</body>
+</html>

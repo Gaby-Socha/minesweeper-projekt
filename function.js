@@ -1,4 +1,4 @@
-let num_fields = 30;
+let num_fields = 3;
 function drawGrid( fields ) {
 	let cvsout = document.getElementById('cvsout');
 	let ctx = cvsout.getContext('2d');
