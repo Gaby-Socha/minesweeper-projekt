@@ -28,4 +28,4 @@ var cvs = document.getElementById('cvs');
 var ctx = cvs.getContext('2d');
 setInterval( displayTime, 100, ctx);
 
-console.log (fields.html);
+

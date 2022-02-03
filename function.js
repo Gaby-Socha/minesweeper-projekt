@@ -38,7 +38,10 @@ function mouseMove( evt ) {
 
 	document.title = selectedX + ":" + selectedY;
 	
-	drawGrid( num_fields) ;
+//field_array[0][0].fieldImage.onload = () => { // Feld 0 0 vom array wird angeprochen 
+	//felderZeichnen(field_array, cvsout); //die gesamte Grafik von jedem einzelnen Feld wird neu geladen (damit das gesamte Spielfeld)
+//}
+felderZeichnen(field_array, cvsout);
 	selectField( selectedX, selectedY);
 
 }

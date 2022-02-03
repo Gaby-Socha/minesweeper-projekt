@@ -1,29 +1,52 @@
-var Field = function(id, grid) {
+var Field = function(id) { // Field Objekt Konstruktor
+
 	this.id = id;
-	this.type = FIELD_TYPE_UNKNOWN;
-	this.pos = grid.getCoordinateFromId( id );
-	this.neighbors = [null,null,null,null];
 	
 	
-	//
-	// Attribut für einen Gegenstand
-	//
-	this.item = null;
+	this.hasBomb = false;
 	
-	this.requiredItem = null;
+	this.hasFahne = false;
 	
-	//
-	// Die für dieses Feld zugewiesene Grafik
-	//
-	this.fieldImage = null;
+	this.fieldImage = new Image();
+	this.fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_unexplored.png';
+
+	
 }
+
+
+Field.prototype.draw = function(cvsout,y,x) {
+	
+	let ctxout = cvsout.getContext('2d');
+	
+	if(this.fieldImage) {
+		ctxout.drawImage( this.fieldImage, 
+		x * cvsout.width / num_fields, 
+		y * cvsout.height / num_fields, 
+		(cvsout.width / num_fields ), // Größe des Bildes
+		(cvsout.height / num_fields) );
+	}	
+}
+
+function felderZeichnen(field_array, cvsout) { //ruft jedes Feld einzelnd auf und läßt es sich mit draw zeichnen
+	
+	for(let i = 0; i <= field_array.length - 1; i++){
+
+		for(let k = 0; k <= field_array[i].length - 1; k++){
+			field_array[i][k].draw(cvsout,i,k);
+		}
+	}	
+}
+
+
+
 //3 Bomben irgendwo auf dem Spielfeld verteilen
-let size = 3;
-let field.array=[];
-for (let i=0; i<size; i++){
-field.array[i]=[];
-for(let x= 0; x<size; x++){
-field.array[i][x]=new Field();
+//Variable num_fields wird aus function.js genommen
+let field_array=[];
+for (let i=0; i<num_fields; i++){
+field_array[i]=[];
+for(let x= 0; x<num_fields; x++){
+field_array[i][x]=new Field();}
+}
 
 let bombs = 3;
 while (bombs>0){
@@ -32,5 +55,6 @@ while (bombs>0){
 		if (random_field.hasBomb==false){
 			random_field.hasBomb=true;
 			bombs--;
+console.log(random_field,random_field.hasBomb);	//Kontrolle über Konsole ob Bomben wirklich gesetzt werden		
 		}	
 }
