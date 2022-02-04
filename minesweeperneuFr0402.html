@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>	
+
+<head>
+<title>Projekt Minesweeper</title>
+</head>
+<meta charset='utf-8' 
+<body>
+
+<canvas id='cvs' width='300px'  height='100px' style='border:1px solid #800080;margin-bottom:10px;'></canvas>
+<br/>
+<br/>
+<button onclick = "drawGrid(document.getElementById('num_fields')).value;">Feldgrösse</button>
+
+<button onclick="drawGrid(6);">Feldgrösse 1</button>
+<button onclick="drawGrid(9);">Feldgrösse 2</button>
+
+<br/>
+<br/>
+<button onclick = "drawGrid(document.getElementById('bombs')).value;">Minenanzahl</button>
+<input type = "text" value = "1 Bombe" size "10">
+<input type = "text" value = "2 Bomben" size "10">
+<input type = "text" value = "3 Bomben" size "10">
+<br/>
+<br/>
+<button onclick = "drawGrid(document.getElementById('bombs')).value;">Zufälliges Level</button>
+<br/>
+<br/>
+<br/>
+
+<canvas id='cvsout' width='300px'  height='300px' style='border:1px solid #000000;'></canvas>
+<script src="function.js" ></script>
+<script src="time.js"></script>
+<script src="bombs.js" ></script>
+
+<script>
+
+
+
+function mouseklick (evt){
+	let cvsout = document.getElementById('cvsout');
+	
+	let selectedX = parseInt( evt.offsetX / ( cvsout.width / num_fields ) ) ;
+	let selectedY = parseInt( evt.offsetY / ( cvsout.height / num_fields ) ) ;
+if (field_array[selectedY][selectedX].hasBomb ==true)
+field_array[selectedY][selectedX].fieldImage.src = 'img/bomb-g84935fc2a_1280.png';
+{
+console.log("Game over");}
+}
+
+cvsout.onclick= mouseklick; //bei Mausklick wird die Funktion ausgeführt 
+//der Funktionsaufruf braucht keine runden Klammern weil ein Event (Zeile 51) verwendet wird 
+
+function rechtsKlick( evt ) {
+
+	//stoppt Kontextmenü, das sich sonst bei Rechtsklick öffnet
+	evt.preventDefault();
+  
+	let selectedX = parseInt( evt.offsetX / ( cvsout.width / num_fields ) );
+	let selectedY = parseInt( evt.offsetY / ( cvsout.height / num_fields ));
+
+        
+		if (field_array[selectedY][selectedX].hasFahne ==false)
+		{
+		console.log("es gibt noch keine Fahne hier wird eine Fahne gesetzt");
+		field_array[selectedY][selectedX].hasFahne = true;
+		field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_flag.png';
+		}
+			else {
+			console.log("es gibt schon eine Fahne - diese nehmen wir jetzt weg");
+			field_array[selectedY][selectedX].hasFahne = false;
+			field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_unexplored.png';}
+			
+		field_array[selectedY][selectedX].fieldImage.onload = () => { 
+	felderZeichnen(field_array, cvsout); 
+}
+}
+
+cvsout.oncontextmenu = rechtsKlick; // Funktion wird bei rechtsklick mit der Maus ausgelöst
+
+field_array[0][0].fieldImage.onload = () => { // Feld 0 0 vom array wird angeprochen 
+	felderZeichnen(field_array, cvsout); //die gesamte Grafik von jedem einzelnen Feld wird neu geladen (damit das gesamte Spielfeld)
+}
+
+
+</script>
+
+
+</body>
+</html>

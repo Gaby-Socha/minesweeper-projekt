@@ -15,10 +15,10 @@ function displayTime( ctx ) {
 	delta_s = delta_s < 10 ? ("0"+delta_s) : delta_s;
 	
  
-	let zeittext = `Zeit ${delta_m}:${delta_s} | Bomben:`;
+	let zeittext = `Zeit ${delta_m}:${delta_s} | Punkte:`;
 	
 	ctx.font = '24px Arial';
-	ctx.fillStyle='#ff0000';
+	ctx.fillStyle='#800080';
 	ctx.fillText( zeittext, 5, 30 );
 	
 	ctx.restore();

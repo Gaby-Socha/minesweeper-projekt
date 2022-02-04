@@ -1,6 +1,8 @@
 let num_fields = 3;
 function drawGrid( fields ) {
 	let cvsout = document.getElementById('cvsout');
+	num_fields=fields;
+	feldgroesse();
 	let ctx = cvsout.getContext('2d');
 	
 	ctx.clearRect( 0, 0, cvsout.width, cvsout.height);
@@ -25,7 +27,7 @@ function selectField( xpos, ypos ) {
 	let cvsout = document.getElementById('cvsout');
 	let ctx = cvsout.getContext('2d');
 	
-	ctx.fillStyle="#ffff00";
+	ctx.fillStyle="#ffffff";
 	ctx.fillRect( xpos * (cvsout.width/num_fields), ypos * (cvsout.height/num_fields), (cvsout.width/num_fields), (cvsout.height/num_fields) );
 
 }
@@ -41,8 +43,8 @@ function mouseMove( evt ) {
 //field_array[0][0].fieldImage.onload = () => { // Feld 0 0 vom array wird angeprochen 
 	//felderZeichnen(field_array, cvsout); //die gesamte Grafik von jedem einzelnen Feld wird neu geladen (damit das gesamte Spielfeld)
 //}
-felderZeichnen(field_array, cvsout);
-	selectField( selectedX, selectedY);
+felderZeichnen(field_array,cvsout);
+	selectField(selectedX,selectedY);
 
 }
 
