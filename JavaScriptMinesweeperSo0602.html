@@ -37,7 +37,12 @@
 
 let field_array=[];
 let bombs = 5;
+//
+//Funktion feldgroesse erstellt das neue Spielfeld
+//
 function feldgroesse(){
+//Das field_array wird mit Feldobjekten gefüllt (Zeile 44- 54) - in der Funktion Feldgroesse
+//Das field array wird durch den Aufruf des Fieldkonstruktors mit Feldobjekten gefüllt
 	field_array=[];
 	
 	for (let i=0; i<num_fields; i++){
@@ -48,7 +53,7 @@ function feldgroesse(){
 		}
 	}
 
-
+//Die Bomben werden zufällig auf das field_array (Spielfeld) verteilt
 	while (bombs>0){
 		let number_of_fields= field_array.flat().length;
 		let random_field=field_array.flat()[parseInt(Math.random()*number_of_fields)]
@@ -92,68 +97,65 @@ function mouseklick (evt){
 	
 	//Wenn hier eine Fahne ist dann passiert durch das ! nichts
 if (!field_array[selectedY][selectedX].hasFahne){
-	
-if (field_array[selectedY][selectedX].hasBomb ==true){
-field_array[selectedY][selectedX].fieldImage.src = 'img/bomb-g84935fc2a_1280.png';
-
-console.log("Game over");}
-
-else {
-switch (field_array[selectedY][selectedX].mines)
-	{
-	case 0:
-	field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_0.png';
-	field_array[selectedY][selectedX].feldstatus = 'offen';
-	break;
-	
-	case 1:
-	field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_1.png';
-	field_array[selectedY][selectedX].feldstatus = 'offen';
-	break;
-	
-	case 2:
-	field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_2.png';
-	field_array[selectedY][selectedX].feldstatus = 'offen';
-	break;
-	
-	case 3:
-	field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_3.png';
-	field_array[selectedY][selectedX].feldstatus = 'offen';
-	break;
-	
-	case 4:
-	field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_4.png';
-	field_array[selectedY][selectedX].feldstatus = 'offen';
-	break;
-	
-	case 5:
-	field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_5.png';
-	field_array[selectedY][selectedX].feldstatus = 'offen';
-	break;
-	
-	case 6:
-	field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_6.png';
-	field_array[selectedY][selectedX].feldstatus = 'offen';
-	break;
-	
-	case 7:
-	field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_7.png';
-	field_array[selectedY][selectedX].feldstatus = 'offen';
-	break;
-	
-	case 8:
-	field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_8.png';
-	field_array[selectedY][selectedX].feldstatus = 'offen';
-	break;
-	
-	
-	
-	
-	
-	
-	
-}
-}
+	//	Ist indem angeklickten Feld eine Bombe?
+	if (field_array[selectedY][selectedX].hasBomb ==true){
+		// wenn die Bedingung zutrifft dann zeichne Bombe/Bild
+		field_array[selectedY][selectedX].fieldImage.src = 'img/bomb-g84935fc2a_1280.png';
+		// "Game over" (erscheint nur über Konsolenabfrage)
+		console.log("Game over");
+	}
+// Wenn die obige Bedingung nicht zutrifft also keine Bombe im Feld ist dann berechnet er das richtige 
+// Zahlenbild und weist es dem Feld zu. Der Feldstatus wird zu offen geändert 
+	else {
+		switch (field_array[selectedY][selectedX].mines)
+		{
+			case 0:
+			field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_0.png';
+			field_array[selectedY][selectedX].feldstatus = 'offen';
+			break;
+			
+			case 1:
+			field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_1.png';
+			field_array[selectedY][selectedX].feldstatus = 'offen';
+			break;
+			
+			case 2:
+			field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_2.png';
+			field_array[selectedY][selectedX].feldstatus = 'offen';
+			break;
+			
+			case 3:
+			field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_3.png';
+			field_array[selectedY][selectedX].feldstatus = 'offen';
+			break;
+			
+			case 4:
+			field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_4.png';
+			field_array[selectedY][selectedX].feldstatus = 'offen';
+			break;
+			
+			case 5:
+			field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_5.png';
+			field_array[selectedY][selectedX].feldstatus = 'offen';
+			break;
+			
+			case 6:
+			field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_6.png';
+			field_array[selectedY][selectedX].feldstatus = 'offen';
+			break;
+			
+			case 7:
+			field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_7.png';
+			field_array[selectedY][selectedX].feldstatus = 'offen';
+			break;
+			
+			case 8:
+			field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_8.png';
+			field_array[selectedY][selectedX].feldstatus = 'offen';
+			break;
+							
+		}
+	}
 }
 
 
@@ -175,22 +177,26 @@ function rechtsKlick( evt ) {
   
 	let selectedX = parseInt( evt.offsetX / ( cvsout.width / num_fields ) );
 	let selectedY = parseInt( evt.offsetY / ( cvsout.height / num_fields ));
+//folgender Code passiert nur wenn das Feld noch verdeckt ist - offene Felder werden ignoriert
+   if (field_array[selectedY][selectedX].feldstatus == 'verdeckt'){
 
-        
+   //wenn das Feld noch keine Fahne hat wird eine Fahne gesetzt 
 		if (field_array[selectedY][selectedX].hasFahne ==false)
 		{
 		console.log("es gibt noch keine Fahne hier wird eine Fahne gesetzt");
 		field_array[selectedY][selectedX].hasFahne = true;
 		field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_flag.png';
 		}
+		// wenn das Feld eine Fahne hat wird diese entfernt
 			else {
 			console.log("es gibt schon eine Fahne - diese nehmen wir jetzt weg");
 			field_array[selectedY][selectedX].hasFahne = false;
 			field_array[selectedY][selectedX].fieldImage.src = 'img/Minesweeper_LAZARUS_61x61_unexplored.png';}
-		//Zeichnet Feld neu	
+		//Zeichnet Feld neu	- onload = warten auf Browser bis er sich das Bild geladen hat 
 		field_array[selectedY][selectedX].fieldImage.onload = () => { 
-	felderZeichnen(field_array, cvsout); 
-}
+			felderZeichnen(field_array, cvsout); 
+		}
+	}
 }
 
 cvsout.oncontextmenu = rechtsKlick; // Funktion wird bei rechtsklick mit der Maus ausgelöst

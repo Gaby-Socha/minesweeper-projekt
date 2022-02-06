@@ -1,4 +1,4 @@
-let num_fields = 3;
+let num_fields = 5;
 function drawGrid( fields ) {
 	let cvsout = document.getElementById('cvsout');
 	num_fields=fields;
@@ -49,7 +49,7 @@ felderZeichnen(field_array,cvsout);
 }
 
 let cvsout = document.getElementById('cvsout');
-cvsout.onmousemove = mouseMove;
+//cvsout.onmousemove = mouseMove;
 
 
 drawGrid(num_fields);
